@@ -42,6 +42,20 @@ The repository now includes the planned architecture folders and placeholder mod
 - `voice/`, `commands/`, `automation/`, `dashboard/`, `memory/`, `ai/`, `rag/`, `security/`, `utils/`
 - `data/`, `screenshots/`, `uploads/`, `docs/`, `tests/`
 
+## Architecture baseline (current + planned)
+
+- Input flow: Voice/Text → `commands/system.py` router → response in text + voice
+- Planned command modules under `commands/`: open/close apps, weather, OCR, PDF summary, WhatsApp, email, reminders, AI chat
+- AI backends scaffolded under `ai/`: Gemini + Ollama
+- Core expansion folders available: memory, RAG, automation, dashboard, and security
+
+Example interaction:
+
+- User: `Hey Mini`
+- Mini: `Owner verified. Yes Boss, how can I help you?`
+- User: `What remains in my Mini project?`
+- Mini: `Okay Sir.`
+
 ## Smoke checks
 
 ```bash

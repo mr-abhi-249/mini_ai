@@ -2,6 +2,6 @@
 
 TITLE = "MINI AI ASSISTANT"
 HELP_TEXT = (
-    "You can say open youtube, open google, open chrome, cpu, ram, battery, "
-    "switch mode, or exit."
+    "You can say hey mini, open youtube, open google, open chrome, cpu, ram, "
+    "battery, what remains in my mini project, switch mode, or exit."
 )
