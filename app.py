@@ -27,9 +27,18 @@ class AssistantApp:
         print("\nChoose mode:")
         print("  1. Voice Mode (speak commands)")
         print("  2. Text Mode (type commands)")
-        print("\nEnter choice (1 or 2): ", end="")
-        choice = input().strip()
-        return choice == "1"
+        choice = self._read_input("\nEnter choice (1 or 2): ")
+        if choice is None:
+            print("\nNo input detected. Starting in text mode.")
+            return False
+        return choice.strip() == "1"
+
+    @staticmethod
+    def _read_input(prompt: str) -> str | None:
+        try:
+            return input(prompt)
+        except EOFError:
+            return None
 
     def handle_command(self, cmd: str):
         result = self.system_handler.handle(cmd, self.respond)
@@ -61,7 +70,8 @@ class AssistantApp:
         print("     Say 'exit' to quit\n")
 
         while True:
-            input("Press Enter to talk to Mini...")
+            if self._read_input("Press Enter to talk to Mini...") is None:
+                raise SystemExit
             command = self.listener.listen_command()
             if command:
                 result = self.handle_command(command)
@@ -78,7 +88,10 @@ class AssistantApp:
         print("Type 'exit' to quit\n")
 
         while True:
-            command = input("You: ").strip().lower()
+            raw_command = self._read_input("You: ")
+            if raw_command is None:
+                raise SystemExit
+            command = raw_command.strip().lower()
             if command == "help":
                 self.respond(HELP_TEXT)
                 continue
@@ -89,8 +102,8 @@ class AssistantApp:
                     return True
 
     def run(self) -> None:
-        use_voice = self.show_menu()
         try:
+            use_voice = self.show_menu()
             while True:
                 use_voice = self.voice_mode() if use_voice else self.text_mode()
         except (KeyboardInterrupt, SystemExit):

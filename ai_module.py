@@ -20,8 +20,7 @@ def init_ai(api_key=None):
         api_key = os.getenv("OPENAI_API_KEY")
 
     if not api_key:
-        print("ERROR: OpenAI API key not found!")
-        print("Set OPENAI_API_KEY environment variable or pass it directly")
+        print("OPENAI_API_KEY not set; AI fallback disabled")
         return False
 
     try:
