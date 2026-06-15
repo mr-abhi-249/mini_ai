@@ -25,7 +25,7 @@ class SystemCommandHandler:
         if any(phrase in normalized_cmd for phrase in ("hey mini", "hello mini", "hi mini")):
             speak("Owner verified. Yes Boss, how can I help you?")
             return CommandResult(True)
-        if "what remains in my mini project" in normalized_cmd or "what remains in mini project" in normalized_cmd:
+        if "what remains in" in normalized_cmd and "mini project" in normalized_cmd:
             speak(
                 "Okay Sir. Remaining roadmap: GUI integration, full command modules, "
                 "Gemini and Ollama routing, memory and RAG pipelines, and the multi-agent system."
