@@ -1,4 +1,5 @@
 import unittest
+from unittest.mock import patch
 
 
 class SmokeTests(unittest.TestCase):
@@ -13,6 +14,21 @@ class SmokeTests(unittest.TestCase):
 
         self.assertTrue(result.handled)
         self.assertEqual(result.action, "switch_mode")
+
+    def test_show_menu_eof_defaults_to_text_mode(self):
+        from app import AssistantApp
+
+        assistant = AssistantApp()
+        with patch("builtins.input", side_effect=EOFError):
+            self.assertFalse(assistant.show_menu())
+
+    def test_text_mode_eof_exits_cleanly(self):
+        from app import AssistantApp
+
+        assistant = AssistantApp()
+        with patch("builtins.input", side_effect=EOFError):
+            with self.assertRaises(SystemExit):
+                assistant.text_mode()
 
 
 if __name__ == "__main__":
