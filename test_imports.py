@@ -1,11 +1,15 @@
-import speech_recognition as sr
-import pyttsx3
-import pyautogui
-import keyboard
-import psutil
-import numpy
-import sounddevice
-import vosk
-# from resemblyzer import VoiceEncoder  # temporarily disabled
+"""Core import smoke test script."""
 
-print("All core libraries imported successfully!")
+modules = [
+    "app",
+    "commands.system",
+    "commands.ai_chat",
+    "voice.listener",
+    "voice.speaker",
+    "utils.config",
+]
+
+for module_name in modules:
+    __import__(module_name)
+
+print("Core modules imported successfully!")
