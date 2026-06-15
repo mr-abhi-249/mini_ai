@@ -67,7 +67,7 @@ mini.bat
 
 ### From Python:
 ```bash
-python main.py
+python app.py
 ```
 
 ---

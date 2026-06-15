@@ -42,7 +42,7 @@ OPENAI_API_KEY=your-api-key-here
 ### 3. **Test AI**
 ```bash
 cd d:\Mini-Ai
-python main.py
+python app.py
 ```
 
 When started, Mini will say:
@@ -86,7 +86,8 @@ AI features disabled, but the assistant still works:
 ## 📁 Files Created
 
 - `ai_module.py` - AI integration module
-- `main.py` - Enhanced with AI support
+- `app.py` - Main assistant entry point
+- `main.py` - Legacy entry point (delegates to app.py)
 
 ---
 
@@ -94,7 +95,7 @@ AI features disabled, but the assistant still works:
 
 ```bash
 cd d:\Mini-Ai
-python main.py
+python app.py
 ```
 
 Enjoy! 🎤🤖
